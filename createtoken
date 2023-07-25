@@ -1,1 +1,27 @@
 
+# Symmetric Key using single secret key for encryption and decryption
+ 
+   import jwt 
+   print(jwt.encode({"Name":"Sandeep","id":"991933","privilege":"user","account":"932323983"}, key='love', algorithm='HS256'))
+
+  # brutforce token  
+    hashcat -a 0 -m 16500 jwt.txt wordlist.txt
+
+ 
+
+# Assymentric key using public and private key for encryption and decryption
+
+    #Generate Public and Private key for token authentication
+
+     openssl genrsa -out private.pem 4096 
+     openssl rsa -in private.pem -pubout -out public.pem
+
+
+   # Generate token using public key
+
+    import jwt
+    public = open('public.pem', 'r').read()  #public.pem is 
+    print(public)
+    print(jwt.encode({"Name":"Sandeep","id":"991933","privilege":"user","account":"932323983"}, key=public, algorithm='RS256'))
+    
+     
